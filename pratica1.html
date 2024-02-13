@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salve salve</title>
+    
+</head>
+<body>
+    <div id="app">
+
+        <div v-if="saldo > 100">
+            {{ title1}}
+        </div>
+
+        <div v-else-if="saldo >= 50 && saldo <= 100">
+            {{ title2}}
+        </div>
+
+        <div v-else-if="saldo >= 1 && saldo < 50">
+            {{ title3}}
+        </div>
+
+        <div v-else>
+            {{ title4}}
+        </div>
+       
+        
+    </div>
+    <script src="https://unpkg.com/vue@3">  </script>
+    <script> 
+   const app= Vue.createApp({
+            data(){
+                    return {
+                       saldo:0,
+                       title1:'Olá Barão',
+                       title2:'Olá Assalariado', 
+                       title3:'Olá pobre', 
+                       title4:'Olá falido', 
+                      
+                    };
+                   
+            },
+
+         }).mount('#app');
+
+    </script>
+   
+    
+</body>
+</html>
