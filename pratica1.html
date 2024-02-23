@@ -8,36 +8,27 @@
 </head>
 <body>
     <div id="app">
-
-        <div v-if="saldo > 100">
-            {{ title1}}
-        </div>
-
-        <div v-else-if="saldo >= 50 && saldo <= 100">
-            {{ title2}}
-        </div>
-
-        <div v-else-if="saldo >= 1 && saldo < 50">
-            {{ title3}}
-        </div>
-
-        <div v-else>
-            {{ title4}}
-        </div>
-       
+        <h1>{{title1}}</h1>   
         
+        <ul>
+            <li v-for="(movie, index) in filmes">
+             <!-- {{movie.name}} - {{movie.lançamento}} -->
+             {{index}}:{{movie}}
+            </li>
+        </ul>
+       
+
     </div>
+
+       
     <script src="https://unpkg.com/vue@3">  </script>
     <script> 
    const app= Vue.createApp({
             data(){
                     return {
-                       saldo:0,
-                       title1:'Olá Barão',
-                       title2:'Olá Assalariado', 
-                       title3:'Olá pobre', 
-                       title4:'Olá falido', 
-                      
+                       title1:'Filmes:',
+                       filmes:{name:'Guardiões da galaxia 3', lançamento: '2022'},
+                   
                     };
                    
             },
