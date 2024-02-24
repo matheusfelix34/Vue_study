@@ -10,12 +10,9 @@
     <div id="app">
         <h1>{{title1}}</h1>   
         
-        <ul>
-            <li v-for="(movie, index) in filmes">
-             <!-- {{movie.name}} - {{movie.lançamento}} -->
-             {{index}}:{{movie}}
-            </li>
-        </ul>
+        <img 
+       :src="src"
+        >
        
 
     </div>
@@ -27,7 +24,7 @@
             data(){
                     return {
                        title1:'Filmes:',
-                       filmes:{name:'Guardiões da galaxia 3', lançamento: '2022'},
+                       src:'https://via.placeholder.com/200', 
                    
                     };
                    
