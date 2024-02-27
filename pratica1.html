@@ -14,7 +14,7 @@
 
             <h1>{{title1}}</h1>   
         
-            <div :class="card">
+            <div :style="card">
 
                 <div  class="card-body">
                     <p>
@@ -23,7 +23,7 @@
 
                     </p>
 
-                </div>
+                </div> 
 
             </div>
             
@@ -39,16 +39,9 @@
    const app= Vue.createApp({
             data(){
                     return {
-                       title1:'Filmes:',
-                        //1º  alternativa 
-                        card:[{'card':true,'text-white':true}, 'bg-primary']
-                       /* 2º  alternativa
-                      card:{'card':true,
-                             'text-white':true
-                    
-                        },*/
-                       // 3º  alternativa 
-                       // card:['card','bg-primary','text-white']
+                       title1:'Texto:',
+                       card:{ 'display':[ '-webkit-box','flex'] ,'background-color': '#0d6efd', 'color': 'white'},
+                       
                         
                    
                     };
