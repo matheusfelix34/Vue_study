@@ -14,7 +14,7 @@
 
             <h1>{{title1}}</h1>   
         
-            <div :style="card">
+            <div  v-bind="attrs">
 
                 <div  class="card-body">
                     <p>
@@ -40,8 +40,12 @@
             data(){
                     return {
                        title1:'Texto:',
-                       card:{ 'display':[ '-webkit-box','flex'] ,'background-color': '#0d6efd', 'color': 'white'},
-                       
+                      
+                      attrs:{
+                            class:{ 'display':[ '-webkit-box','flex'] ,'card':true, 'bg-primary':true, 'text-white': true},
+                            id: this.title1
+                            },
+
                         
                    
                     };
