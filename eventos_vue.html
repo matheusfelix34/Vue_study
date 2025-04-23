@@ -13,17 +13,8 @@
     
     <div id="app" >
 
-        <div @click="divClick" :style="distaque">
-            <a
-            href="https://www.google.com.br/"
-            @click.prevent.stop="linkClick"     
-            >
-            link
-                 
-           </a>
-        </div>
+       <input type="text" @keyup.enter="digitando_especifico($event)">
            
-
 
         
         
@@ -71,8 +62,22 @@
             },
 
             divClick(){
-                alert('div_clicada');
+                alert('div_clicada');digitando_especifico
             },
+            digitando(event){
+                if(event.key == 'd'){
+                    alert('teclou  "d"')
+                }
+              
+            },
+            digitando_especifico(event){
+                        if(event.key == 'Enter'){
+                            console.log(event);
+                        }
+                   
+               
+              
+            }
             
         },
 
