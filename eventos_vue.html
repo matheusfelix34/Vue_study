@@ -11,27 +11,21 @@
 </head>
 <body>
     
-    <div id="app">
+    <div id="app" >
 
-           <a
+        <div @click="divClick" :style="distaque">
+            <a
             href="https://www.google.com.br/"
-            @click.prevent="linkClick"     
+            @click.prevent.stop="linkClick"     
             >
             link
                  
            </a>
+        </div>
+           
 
 
-        <div class="container mt-5">
-            <div class="mx-auto" style="width: 200px">
-                {{counter}}
-              <div class="input-group">
-                <button class="btn btn-outline-secondary" @click="removeOne(),anotherOne($event)" type="button">-</button>
-                <input type="text" value="1"  v-model="counter" class="form-control text-center" disabled>
-                <button class="btn btn-outline-secondary" type="button" @click="addOne(), redirect()" >+</button>
-              </div>
-            </div>
-          </div>
+        
         
     </div>
    
@@ -43,7 +37,8 @@
 
         data(){
             return {
-                counter: 1
+                counter: 1,
+                distaque:{border:'2px solid red',padding: '20px'}
             }
         },
 
@@ -73,7 +68,11 @@
 
             linkClick(){
                 alert('link clicado');
-            }
+            },
+
+            divClick(){
+                alert('div_clicada');
+            },
             
         },
 
