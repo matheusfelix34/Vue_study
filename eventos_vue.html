@@ -17,9 +17,9 @@
             <div class="mx-auto" style="width: 200px">
                 {{counter}}
               <div class="input-group">
-                <button class="btn btn-outline-secondary" @click="removeOne()" type="button">-</button>
+                <button class="btn btn-outline-secondary" @click="removeOne(),anotherOne($event)" type="button">-</button>
                 <input type="text" value="1"  v-model="counter" class="form-control text-center" disabled>
-                <button class="btn btn-outline-secondary" type="button" @click="addOne()" >+</button>
+                <button class="btn btn-outline-secondary" type="button" @click="addOne(), redirect()" >+</button>
               </div>
             </div>
           </div>
@@ -52,6 +52,14 @@
 
                     this.counter-=1;
                 } 
+            },
+
+            redirect(){
+                console.log('salve');
+            },
+
+            anotherOne(evt){
+                console.log(evt);
             }
             
         },
