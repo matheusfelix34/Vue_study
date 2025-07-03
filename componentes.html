@@ -20,7 +20,8 @@
 
         <div class="container mt-5">
             <div class="mx-auto" style="width: 400px;">
-                <card></card>
+                <card v-for="post in posts" :post="post"></card>
+               
            
             </div>
            
@@ -36,11 +37,11 @@
         <div class="col">
             <div class="card shadow-sm">
               
-                <card-image image="https://picsum.photos/300/150"></card-image>
+                <card-image :image="post.image"></card-image>
                 
               <div class="card-body">
-                    <card-description></card-description>
-                    <buttons></buttons>
+                    <card-description :desc="post.description"></card-description>
+                    <buttons :view="true" :edit="true"></buttons>
                
               </div>
 
@@ -53,14 +54,14 @@
         <img :src="image" alt="" class="card-img-top">
     </template>
     <template id="card-description">
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+       {{desc}}
     </template>
 
     <template id="buttons">
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              <button v-if="view" type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button v-if="edit" type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
             </div>
           
           </div>
@@ -72,8 +73,12 @@
     
             data(){
                 return {
-                    counter: 1,
-                    distaque:{border:'2px solid red',padding: '20px'}
+                    posts: [
+                       { description:'Descrição 1', image: 'https://picsum.photos/id/237/300/150' }, 
+                       { description:'Descrição 2', image: 'https://picsum.photos/id/237/300/150' }, 
+                       { description:'Descrição 3', image: 'https://picsum.photos/id/237/300/150' }, 
+                       { description:'Descrição 4', image: 'https://picsum.photos/id/237/300/150' }, 
+                    ]
                 }
             },
     
@@ -85,15 +90,9 @@
         })
     
         app.component('card', {
-    
-            data(){
-                return {
-                    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-                   // cardImage: 'https://picsum.photos/200/300',
-                }
-            },
-    
             template: '#card',
+
+            props: ['post']
         })
 
         app.component('card-image', {
@@ -103,11 +102,15 @@
         })
 
         app.component('card-description',{
-            template: '#card-description'
+            template: '#card-description',
+
+            props: ['desc']
         })
 
         app.component('buttons',{
-            template: '#buttons'
+            template: '#buttons',
+
+            props: ['view','edit']
         })
     
         app.mount('#app');
