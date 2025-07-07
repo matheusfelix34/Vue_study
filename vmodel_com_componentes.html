@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        .container {
+            max-widht: 767px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app" >
+
+        <div class="container mt-5">
+            <div class="mx-auto" style="width: 400px;">
+                {{paiUser}}
+                <search-use :pai="paiUser"></search-use>
+            
+            </div>
+           
+        </div>
+
+      
+           
+
+        
+        
+    </div>
+
+    <template id="searchUser">
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+                <div class="input-group">
+                    <input @keyup="search" type="text" class="form-control" placeholder="Primeiro nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input @keyup="search" type="text" class="form-control" placeholder="Sobrenome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button  class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar</button>
+                  </div>
+            </div>
+      </div>
+    </template>
+    
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+    
+            data(){
+                return{
+                    paiUser: 'Laravue',
+                }
+            },
+
+            
+        })
+    
+        app.component('search-use',{
+            template: '#searchUser',
+
+            props: ['pai'],
+
+            data(){
+                return {
+                    user:""  
+                }
+            },
+
+            created() {
+                this.user = this.pai;
+            },
+            
+            methods: {
+                search(){
+                    
+                    this.$emit('update:modelValue', this.user);
+                }
+            },
+        })
+        
+    
+        app.mount('#app');
+    
+    </script>
+    
+</body>
+
+</html>
