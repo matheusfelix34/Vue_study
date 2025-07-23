@@ -7,7 +7,7 @@
 
   <div>
 
-           <h1 :class="{'title': false, 'title-home' : isHome }">
+           <h1  @:click="receba" :class="{'title': false, 'title-home' : isHome }">
               Curso Vue 3 bolado.
            </h1>
 
@@ -18,6 +18,10 @@
                     :alt="obj.imgAlt"
                  >
              </div>
+             <br><br>
+             <form action="https://www.google.com/" @submit.prevent>
+                <button type="submit">receba</button>
+             </form>
   </div>   
 
   
@@ -26,6 +30,15 @@
 </template>
 
 <script setup>
+
+function receba($evt){
+  alert($evt);
+}
+
+// function onSubmit(event){
+//   event.preventDefault();
+      
+// }
 // import HelloWorld from './components/HelloWorld.vue';
 // import TheHeader from './components/TheHeader.vue';
   
