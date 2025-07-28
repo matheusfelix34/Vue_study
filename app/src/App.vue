@@ -8,7 +8,11 @@
   <div>
 
            <h1  @:click="receba" :class="{'title': false, 'title-home' : isHome }">
-              Curso Vue 3 bolado.
+              Vue 3
+           </h1>
+           <br><br>
+           <h1 >
+            fullname: {{ fullname }}
            </h1>
 
             <div v-for="(obj, index) in todos" :key="obj.id" class="todos-item">
@@ -19,7 +23,11 @@
                  >
              </div>
              <br><br>
-             <form action="https://www.google.com/" @submit.prevent>
+             <form action="https://www.google.com/" @submit="onSubmit">
+              <input id="nome" value="">
+              <br><br>
+              <input id="apelido" value="">
+              <br><br>
                 <button type="submit">receba</button>
              </form>
   </div>   
@@ -31,20 +39,17 @@
 
 <script setup>
 
-function receba($evt){
-  alert($evt);
-}
-
-// function onSubmit(event){
-//   event.preventDefault();
-      
-// }
+import { computed } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
 // import TheHeader from './components/TheHeader.vue';
   
 // let showHeader=false;
-// let nome ="Rodolfo";
-// let title="title";
+let first_name ="Rodolf";
+let last_name ="Guanabara";
+
+
+
+
 let isHome = true;
 let todos= [
   {
@@ -70,6 +75,24 @@ let todos= [
     "completed": false
   }
 ];
+
+function receba($evt){
+  alert($evt);
+}
+
+
+function onSubmit(event){
+ 
+  console.log(event)
+  event.preventDefault();
+      
+}
+
+const fullname  =computed(() => {
+  return `${first_name} ${last_name}`;
+});
+
+
 </script>
 
 <style>
