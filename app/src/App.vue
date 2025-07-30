@@ -45,10 +45,24 @@
 
              <br><br>
              <form action="https://www.google.com/" @submit="onSubmit">
-              <input  id="nome" value="">
+              
               <br><br>
-              <input id="apelido" value="">
+              <select v-model="pageCount">
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+                <option value="4">Opção 4</option>
+              </select>
               <br><br>
+
+                <input type="text" v-model="objeto.first_name" placeholder="Digite seu nome">
+                <br><br>
+                <input type="text" v-model="objeto.last_name" placeholder="Digite seu sobrenome">
+                <br><br>
+
+                {{ objeto.first_name }} {{ objeto.last_name }}
+
+            <br><br>
                 <button type="submit">receba</button>
              </form>
   </div>   
@@ -60,16 +74,20 @@
 
 <script setup>
 
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
 // import TheHeader from './components/TheHeader.vue';
   
 // let showHeader=false;
 let first_name ="Rodolfa";
-let last_name ="Guanabara";
+let last_name ="Smash";
+let name= ref("Thanos Guanabara");
+let pageCount = ref(4);
 
-
-
+let objeto = ref({
+  first_name: "Rodolfa",
+  last_name: "Smash"
+});
 
 let isHome = true;
 let todos=
@@ -101,6 +119,38 @@ ref(
 
 );
 
+
+const fullname  =computed(() => {
+  return `${first_name} ${last_name}`;
+});
+
+const todoCompleted  =computed(() => {
+  return todos.value.filter((todo) => todo.completed);
+});
+
+const todoUnCompleted  =computed(() => {
+  return todos.value.filter((todo) => !todo.completed);
+});
+
+watch(name, (value) => {
+  if(value.length < 3){
+    console.log('O nome deve ter mais de 3 caracteres')
+    return;
+  }
+  saveName();
+});
+
+watch(pageCount,() => {
+  ajaxChangePage();
+});
+
+watch(objeto, () => {
+  console.log('Objeto alterado');
+},
+{
+  deep: true
+});
+
 function receba($evt){
   alert($evt);
 }
@@ -116,17 +166,16 @@ function onSubmit(event){
       
 }
 
-const fullname  =computed(() => {
-  return `${first_name} ${last_name}`;
-});
+function saveName(){
+  console.log('Ajax para salvar o nome')
+  console.log(name.value)
+}
 
-const todoCompleted  =computed(() => {
-  return todos.value.filter((todo) => todo.completed);
-});
+function ajaxChangePage(){
+  console.log('Paginação alterada para: ' + pageCount.value);
+ 
+}
 
-const todoUnCompleted  =computed(() => {
-  return todos.value.filter((todo) => !todo.completed);
-});
 
 </script>
 
