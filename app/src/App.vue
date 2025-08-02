@@ -47,12 +47,23 @@
              <form action="https://www.google.com/" @submit="onSubmit">
               
               <br><br>
-              <select v-model="pageCount">
+              <select   v-model="pageCount">
                 <option value="1">Opção 1</option>
                 <option value="2">Opção 2</option>
                 <option value="3">Opção 3</option>
                 <option value="4">Opção 4</option>
               </select>
+              <br><br>
+
+              <br><br>
+              <select  v-model="titulo" id="titulos">
+              <option v-for="(title, index) in todoTitles" :key="index" :value="index" >{{ title }}</option>
+              </select>
+              <br><br>
+              <select v-model="chapter" id="chapters">
+                <option v-for="(chapter, index) in chapters" :key="index" :value="index" >{{ chapter }}</option>
+              </select>
+
               <br><br>
 
                 <input type="text" v-model="objeto.first_name" placeholder="Digite seu nome">
@@ -79,6 +90,8 @@ import { computed, ref, watch } from 'vue';
 // import TheHeader from './components/TheHeader.vue';
   
 // let showHeader=false;
+let titulo=  ref('');
+let chapter =ref('');
 let first_name ="Rodolfa";
 let last_name ="Smash";
 let name= ref("Thanos Guanabara");
@@ -117,8 +130,16 @@ ref(
   }
 ]
 
+
+
 );
 
+let chapters =ref(['Introdução', 'Préfacio', 'Agradecimentos']);
+
+const todoTitles = computed(() =>{
+   return todos.value.map((todo) => todo.title )
+});
+ 
 
 const fullname  =computed(() => {
   return `${first_name} ${last_name}`;
@@ -131,6 +152,14 @@ const todoCompleted  =computed(() => {
 const todoUnCompleted  =computed(() => {
   return todos.value.filter((todo) => !todo.completed);
 });
+
+watch(titulo, (value)=>{
+  console.log('Titulo alterado para:' + value);
+  atualizarSelect(value);
+  chapter.value ='';
+});
+
+
 
 watch(name, (value) => {
   if(value.length < 3){
@@ -150,6 +179,20 @@ watch(objeto, () => {
 {
   deep: true
 });
+
+function atualizarSelect(value){
+ 
+  if(value === 0){
+    chapters.value = ['Capitulo 1', 'Capitulo 2', 'Capitulo 3'];
+  }
+  if(value === 1){
+    chapters.value = ['Capitulo 4', 'Capitulo 5', 'Capitulo 6'];
+  }
+
+  if(value === 2){
+    chapters.value = ['Capitulo 7', 'Capitulo 8', 'Capitulo 9'];
+  }
+}
 
 function receba($evt){
   alert($evt);
