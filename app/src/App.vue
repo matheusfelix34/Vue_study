@@ -220,6 +220,7 @@ function ajaxChangePage(){
  
 }
 let teste ='';
+
 onMounted(()=>{
   teste = document.getElementById('header');
   console.log(teste);
