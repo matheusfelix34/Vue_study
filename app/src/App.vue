@@ -1,9 +1,9 @@
 <template>
 
-  <!-- <TheHeader v-show="showHeader"/>
+  <TheHeader/>
   <div v-show="showHeader">{{ nome }}</div>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 
   <div>
 
@@ -85,11 +85,12 @@
 
 <script setup>
 
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, onMounted} from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
-// import TheHeader from './components/TheHeader.vue';
-  
-// let showHeader=false;
+ import TheHeader from './components/TheHeader.vue';
+
+
+let showHeader=true;
 let titulo=  ref('');
 let chapter =ref('');
 let first_name ="Rodolfa";
@@ -218,6 +219,11 @@ function ajaxChangePage(){
   console.log('Paginação alterada para: ' + pageCount.value);
  
 }
+let teste ='';
+onMounted(()=>{
+  teste = document.getElementById('header');
+  console.log(teste);
+});
 
 
 </script>
