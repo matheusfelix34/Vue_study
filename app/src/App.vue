@@ -3,9 +3,10 @@
 
   <div>
     <div class="card">
-s
+
     </div>
-      <BaseCard/>
+     <BaseAlert variant="success">Seu formulário foi enviado com sucesso!</BaseAlert>
+     
   </div>
 
 
@@ -14,7 +15,9 @@ s
 <script setup>
 
 import { onMounted} from 'vue';
-import BaseCard from '@/components/BaseCard.vue';
+
+import BaseAlert from './components/BaseAlert.vue';
+
 
  
 
