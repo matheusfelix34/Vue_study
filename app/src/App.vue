@@ -1,18 +1,12 @@
 <template>
 
-  <TheHeader>
-    <template v-slot:title>
-      <h1 class="title-home">Titulo do Header</h1>
-    </template>
 
-   <p>Receba o conteudo</p>
-  </TheHeader> 
-  <div v-show="showHeader">{{ nome }}</div>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-
-
-  
+  <div>
+    <div class="card">
+s
+    </div>
+      <BaseCard/>
+  </div>
 
 
 </template>
@@ -20,11 +14,12 @@
 <script setup>
 
 import { onMounted} from 'vue';
-// import HelloWorld from './components/HelloWorld.vue';
- import TheHeader from './components/TheHeader.vue';
+import BaseCard from '@/components/BaseCard.vue';
+
+ 
 
 
-let showHeader=true;
+
 
 let teste ='';
 
