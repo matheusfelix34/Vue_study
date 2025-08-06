@@ -1,12 +1,15 @@
 <template>
     <div :class="baseClass">
         <slot/>
+        <button @click="onClick()">
+            X
+        </button>
     </div>
 </template>
 
 <script setup>
 
-import { computed, defineProps } from 'vue';
+import { computed, defineProps, defineEmits } from 'vue';
 
 // const props= defineProps(['variant'])
 const  props = defineProps({ 
@@ -27,6 +30,14 @@ const baseClass = computed(() => {
         
     ]
 });
+
+const emit = defineEmits(['close'])
+
+function onClick(){
+    console.log('clicou no botão')
+    emit('close')
+   
+}
 
 </script>
 
