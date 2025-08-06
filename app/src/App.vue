@@ -5,7 +5,7 @@
     <div class="card">
 
     </div>
-     <BaseAlert variant="success">Seu formulário foi enviado com sucesso!</BaseAlert>
+     <BaseAlert v-show="showAlert" variant="success" @close="onClose()">Seu formulário foi enviado com sucesso!</BaseAlert>
      
   </div>
 
@@ -14,7 +14,7 @@
 
 <script setup>
 
-import { onMounted} from 'vue';
+import { ref } from 'vue';
 
 import BaseAlert from './components/BaseAlert.vue';
 
@@ -24,13 +24,13 @@ import BaseAlert from './components/BaseAlert.vue';
 
 
 
-let teste ='';
 
-onMounted(()=>{
-  teste = document.getElementById('header');
-  console.log(teste);
-});
+let showAlert = ref(true);
 
+function onClose(){
+  console.log('Fechou o alerta');
+  showAlert.value=! showAlert.value;
+}
 
 </script>
 
